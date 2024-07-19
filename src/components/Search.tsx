@@ -59,20 +59,50 @@ export default function Search() {
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
             Donec odio. Quisque volutpat mattis eros.
           </p>
-          <div className="flex justify-evenly ">
+          <div className="flex justify-evenly py-[19px] px-[15px] bg-[#F6F8FF] rounded-[10px] mb-[24px]">
             <div className="flex flex-col items-center">
-              <p>Repos</p>
-              <span>8</span>
+              <p
+                className="text-[#4B6A9B] text-[11px]
+              font-normal mb-[8px]"
+              >
+                Repos
+              </p>
+              <span className="text-[#2B3442] text-4 font-bold">
+                8
+              </span>
             </div>
             <div className="flex flex-col items-center">
-              <p>Followers</p>
-              <span>3938</span>
+              <p
+                className="text-[#4B6A9B] text-[11px]
+              font-normal mb-[8px]"
+              >
+                Followers
+              </p>
+              <span className="text-[#2B3442] text-4 font-bold">
+                3938
+              </span>
             </div>
             <div className="flex flex-col items-center">
-              <p>Following</p>
-              <span>9</span>
+              <p
+                className="text-[#4B6A9B] text-[11px]
+              font-normal mb-[8px]"
+              >
+                Following
+              </p>
+              <span className="text-[#2B3442] text-4 font-bold">
+                9
+              </span>
             </div>
           </div>
+        </div>
+        <div className="">
+          <div>
+            <p>San Francisco</p>
+          </div>
+
+          <p>https://github.blog</p>
+          <p>Not Available</p>
+          <p>@github</p>
         </div>
       </main>
     </div>
