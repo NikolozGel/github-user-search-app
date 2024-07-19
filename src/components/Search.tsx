@@ -8,9 +8,9 @@ import company from "/public/assets/icon-company.svg";
 
 export default function Search() {
   return (
-    <div className="pt-[31px] px-[24px] pb-[79px]">
-      <header className="mb-4">
-        <div className="flex justify-between items-center mb-[35px]">
+    <div className="pt-[31px] px-[24px] pb-[79px] md:pt-[109px] md:w-[573px]">
+      <header className="mb-4 ">
+        <div className="flex justify-between items-center mb-[35px] md:w-[573px]">
           <h1
             className="text-[#222731] text-[26px]
         font-bold mr-[121px]"
@@ -25,24 +25,24 @@ export default function Search() {
           </div>
         </div>
         <form>
-          <div className="w-[327px] h-[60px] bg-white rounded-[15px] flex justify-stretch items-center pl-[16px]">
+          <div className="w-[327px] h-[60px] bg-white rounded-[15px] flex justify-stretch items-center pl-[16px] md:w-[573px]">
             <img
               src={search}
               alt="searchImg"
-              className="w-[20px] h-[20px] mr-[9px]"
+              className="w-[20px] md:w-[24px] h-[20px] md:h-[24px] mr-[9px] md:mr-[23.94px] ml-[8px]"
             />
             <input
               type="text"
-              placeholder="Search GitHub username..."
+              placeholder="Search GitHub username."
               className="text-[#4B6A9B] text-[13px] w-[184px] mr-[7px]"
             ></input>
-            <button className="w-[84px] h-[46px] bg-[#0079FF] rounded-[10px] text-white text-[14px] font-bold">
+            <button className="w-[84px] md:w-[106px] h-[46px] md:h-[50px] bg-[#0079FF] rounded-[10px] text-white text-[14px] md:text-[16px] font-bold md:ml-[231px] ">
               Search
             </button>
           </div>
         </form>
       </header>
-      <main className="bg-white rounded-[15px] px-[24px] pt-[33px] pb-[49px]">
+      <main className="bg-white rounded-[15px] px-[24px] pt-[33px] pb-[49px] md:w-[573px]">
         <div>
           <div className="flex items-center mb-[34px]">
             <img src={oval} alt="" className="mr-[19px]" />
