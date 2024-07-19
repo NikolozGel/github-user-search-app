@@ -25,7 +25,7 @@ export default function Search() {
           </div>
         </div>
         <form>
-          <div className="w-[327px] h-[60px] bg-white rounded-[15px] flex justify-stretch items-center pl-[16px] md:w-[573px]">
+          <div className="w-[327px] h-[60px] md:h-[69px] bg-white rounded-[15px] flex justify-stretch items-center pl-[16px] md:w-[573px]">
             <img
               src={search}
               alt="searchImg"
@@ -36,103 +36,114 @@ export default function Search() {
               placeholder="Search GitHub username."
               className="text-[#4B6A9B] text-[13px] w-[184px] mr-[7px]"
             ></input>
-            <button className="w-[84px] md:w-[106px] h-[46px] md:h-[50px] bg-[#0079FF] rounded-[10px] text-white text-[14px] md:text-[16px] font-bold md:ml-[231px] ">
+            <button className="w-[84px] md:w-[106px] h-[46px] md:h-[50px] bg-[#0079FF] rounded-[10px] text-white text-[14px] md:text-[16px] font-bold mr-[8px] md:ml-[195px] ">
               Search
             </button>
           </div>
         </form>
       </header>
-      <main className="bg-white rounded-[15px] px-[24px] pt-[33px] pb-[49px] md:w-[573px]">
+      <main className="bg-white rounded-[15px] px-[24px] pt-[33px] pb-[49px] md:pb-[4.5px] md:w-[573px] md:p-10">
         <div>
-          <div className="flex items-center mb-[34px]">
-            <img src={oval} alt="" className="mr-[19px]" />
+          <div className="flex items-center mb-[34px] md:mb-[24px]">
+            <img
+              src={oval}
+              alt="ovalImg"
+              className="mr-[19px] md:mr-[41px] md:h-[117px] md:w-[117px]"
+            />
             <div>
-              <h3 className="text-[#2b3442] font-bold">
+              <h3 className="text-[#2b3442] md:text-[26px] font-bold ">
                 The Octocat
               </h3>
               <p
-                className="text-[#0079FF] text-[13px]
+                className="text-[#0079FF] text-[13px] md:text-[16px]
               font-normal mb-[6px]"
               >
                 @octocat
               </p>
-              <p className="text-[#697C9A] text-[13px] font-normal">
+              <p className="text-[#697C9A] text-[13px] md:text-[15px] font-normal">
                 Joined 25 Jan 2011
               </p>
             </div>
           </div>
-          <p className="text-[#4B6A9B] text-[13px] font-normal leading-[25px] mb-[23px] w-[279px]">
+          <p className="text-[#4B6A9B] text-[13px] md:text-[15px] font-normal leading-[25px] mb-[23px] md:mb-[32px] w-[279px] md:w-[470px]">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
             Donec odio. Quisque volutpat mattis eros.
           </p>
-          <div className="flex justify-evenly py-[19px] px-[15px] bg-[#F6F8FF] rounded-[10px] mb-[24px]">
+          <div className="flex justify-evenly md:justify-around py-[19px] md:py-[16px] px-[15px] bg-[#F6F8FF] rounded-[10px] mb-[24px] md:mb-[30px]">
             <div className="flex flex-col items-center">
               <p
-                className="text-[#4B6A9B] text-[11px]
+                className="text-[#4B6A9B] text-[11px] md:text-[13px]
               font-normal mb-[8px]"
               >
                 Repos
               </p>
-              <span className="text-[#2B3442] text-4 font-bold">
+              <span className="text-[#2B3442] text-4 md:text-[22px] font-bold">
                 8
               </span>
             </div>
             <div className="flex flex-col items-center">
               <p
                 className="text-[#4B6A9B] text-[11px]
-              font-normal mb-[8px]"
+              font-normal mb-[8px] md:text-[13px]"
               >
                 Followers
               </p>
-              <span className="text-[#2B3442] text-4 font-bold">
+              <span className="text-[#2B3442] text-4 md:text-[22px] font-bold">
                 3938
               </span>
             </div>
             <div className="flex flex-col items-center">
               <p
                 className="text-[#4B6A9B] text-[11px]
-              font-normal mb-[8px]"
+              font-normal mb-[8px] md:text-[13px]"
               >
                 Following
               </p>
-              <span className="text-[#2B3442] text-4 font-bold">
+              <span className="text-[#2B3442] text-4 md:text-[22px] font-bold">
                 9
               </span>
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-[17px] mb-[9px]">
-          <div className="flex items-center">
-            <img
-              src={location}
-              alt="locationImg"
-              className="mr-[19px]"
-            />
-            <p>San Francisco</p>
-          </div>
-          <div className="flex items-center">
-            <img
-              src={website}
-              alt="websiteImg"
-              className="mr-[13px]"
-            />
-            <p>https://github.blog</p>
-          </div>
-          <div className="flex items-center">
-            <img
-              src={twitter}
-              alt="twitterImg"
-              className="mr-[13px]"
-            />
-            <p>Not Available</p>
-          </div>
-          <div className="flex items-center">
-            <img
-              src={company}
-              alt="companyImg"
-              className="mr-[13px]"
-            />
-            <p>@github</p>
+        <div className="flex flex-col mb-[9px] ">
+          <div className="md:flex">
+            <div className="md:mr-[65px]">
+              <div className="flex items-center mb-[17px]">
+                <img
+                  src={location}
+                  alt="locationImg"
+                  className="mr-[19px]"
+                />
+                <p>San Francisco</p>
+              </div>
+              <div className="flex items-center mb-[17px]">
+                <img
+                  src={website}
+                  alt="websiteImg"
+                  className="mr-[13px]"
+                />
+                <p>https://github.blog</p>
+              </div>
+            </div>
+
+            <div>
+              <div className="flex items-center mb-[17px]">
+                <img
+                  src={twitter}
+                  alt="twitterImg"
+                  className="mr-[13px]"
+                />
+                <p>Not Available</p>
+              </div>
+              <div className="flex items-center">
+                <img
+                  src={company}
+                  alt="companyImg"
+                  className="mr-[13px]"
+                />
+                <p>@github</p>
+              </div>
+            </div>
           </div>
         </div>
       </main>
