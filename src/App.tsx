@@ -1,7 +1,12 @@
 import "./App.css";
+import Search from "./components/Search";
 
 function App() {
-  return <>=</>;
+  return (
+    <>
+      <Search />
+    </>
+  );
 }
 
 export default App;
