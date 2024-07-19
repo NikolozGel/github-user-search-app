@@ -10,4 +10,6 @@
 
 body {
   background-color: #f6f8ff;
+  display: flex;
+  justify-content: center;
 }
