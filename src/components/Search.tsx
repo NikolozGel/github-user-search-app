@@ -1,10 +1,14 @@
 import moon from "/public/assets/icon-moon.svg";
 import search from "/public/assets/icon-search.svg";
 import oval from "/public/assets/Oval.svg";
+import location from "/public/assets/icon-location.svg";
+import website from "/public/assets/icon-website.svg";
+import twitter from "/public/assets/icon-twitter.svg";
+import company from "/public/assets/icon-company.svg";
 
 export default function Search() {
   return (
-    <div className="pt-[31px] px-[24px]">
+    <div className="pt-[31px] px-[24px] pb-[79px]">
       <header className="mb-4">
         <div className="flex justify-between items-center mb-[35px]">
           <h1
@@ -13,10 +17,12 @@ export default function Search() {
           >
             devfinder
           </h1>
-          <h3 className="text-[#4B6A9B] text-[13px] font-bold tracking-[2.5px]">
-            DARK
-          </h3>
-          <img src={moon} alt="moonImg" />
+          <div className="flex">
+            <h3 className="text-[#4B6A9B] text-[13px] font-bold tracking-[2.5px]">
+              DARK
+            </h3>
+            <img src={moon} alt="moonImg" className="ml-[16px]" />
+          </div>
         </div>
         <form>
           <div className="w-[327px] h-[60px] bg-white rounded-[15px] flex justify-stretch items-center pl-[16px]">
@@ -55,7 +61,7 @@ export default function Search() {
               </p>
             </div>
           </div>
-          <p className="text-[#4B6A9B] text-[13px] font-normal leading-[25px] mb-[23px]">
+          <p className="text-[#4B6A9B] text-[13px] font-normal leading-[25px] mb-[23px] w-[279px]">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
             Donec odio. Quisque volutpat mattis eros.
           </p>
@@ -95,14 +101,39 @@ export default function Search() {
             </div>
           </div>
         </div>
-        <div className="">
-          <div>
+        <div className="flex flex-col gap-[17px] mb-[9px]">
+          <div className="flex items-center">
+            <img
+              src={location}
+              alt="locationImg"
+              className="mr-[19px]"
+            />
             <p>San Francisco</p>
           </div>
-
-          <p>https://github.blog</p>
-          <p>Not Available</p>
-          <p>@github</p>
+          <div className="flex items-center">
+            <img
+              src={website}
+              alt="websiteImg"
+              className="mr-[13px]"
+            />
+            <p>https://github.blog</p>
+          </div>
+          <div className="flex items-center">
+            <img
+              src={twitter}
+              alt="twitterImg"
+              className="mr-[13px]"
+            />
+            <p>Not Available</p>
+          </div>
+          <div className="flex items-center">
+            <img
+              src={company}
+              alt="companyImg"
+              className="mr-[13px]"
+            />
+            <p>@github</p>
+          </div>
         </div>
       </main>
     </div>
