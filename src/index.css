@@ -6,10 +6,11 @@
 
 * {
   font-family: "Space Mono", monospace;
+  box-sizing: border-box;
 }
 
 body {
-  background-color: #f6f8ff;
   display: flex;
   justify-content: center;
+  overflow-x: hidden;
 }
