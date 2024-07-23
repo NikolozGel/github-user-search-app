@@ -1,19 +1,57 @@
-import moon from "/assets/icon-moon.svg";
-import search from "/assets/icon-search.svg";
+import searchImg from "/assets/icon-search.svg";
 import oval from "/assets/Oval.svg";
 import location from "/assets/icon-location.svg";
 import website from "/assets/icon-website.svg";
 import twitter from "/assets/icon-twitter.svg";
 import company from "/assets/icon-company.svg";
-import { useState } from "react";
-import sun from "/public/assets/icon-sun.svg";
+import { useEffect, useState, useRef } from "react";
+import sun from "/assets/icon-sun.svg";
+import moon from "/assets/icon-moon.svg";
+
+interface UserType {
+  login: string;
+  id: string;
+  name: string;
+  created_at: string;
+  public_repos: string;
+  followers: string;
+  following: string;
+  twitter_userName: string | null;
+  avatar_url: string | undefined;
+  location: string | null;
+  blog: string | null;
+  company: string | null;
+}
 
 export default function Search() {
   const [theme, setTheme] = useState<boolean>(true);
+  const [user, setUser] = useState<UserType | undefined>();
 
-  const handeClick = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
+  const searcInput = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
+  const getUser = async () => {
+    try {
+      const response = await fetch(
+        `https://api.github.com/users/${searcInput.current?.value}`
+      );
+      const jsonData = await response.json();
+      setUser(jsonData);
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  const createdAt = user?.created_at;
+  const dateObject: Date = new Date(createdAt as string);
+  const year = dateObject.getUTCFullYear();
+  const monthName = dateObject.toLocaleString("default", {
+    month: "long",
+  });
+  const month = dateObject.getUTCMonth();
 
   return (
     <div
@@ -30,12 +68,22 @@ export default function Search() {
             devfinder
           </h1>
           <div className="flex">
-            <h3
-              className="text-[#4B6A9B] text-[13px] font-bold tracking-[2.5px]"
-              style={{ color: theme ? "" : "#FFF" }}
-            >
-              LIGHT
-            </h3>
+            {theme ? (
+              <h3
+                className="text-[#4B6A9B] text-[13px] font-bold tracking-[2.5px]"
+                style={{ color: theme ? "" : "#FFF" }}
+              >
+                DARK
+              </h3>
+            ) : (
+              <h3
+                className="text-[#4B6A9B] text-[13px] font-bold tracking-[2.5px]"
+                style={{ color: theme ? "" : "#FFF" }}
+              >
+                LIGHT
+              </h3>
+            )}
+
             {theme ? (
               <img
                 src={moon}
@@ -63,19 +111,30 @@ export default function Search() {
             style={{ backgroundColor: theme ? "" : "#1E2A47" }}
           >
             <img
-              src={search}
+              src={searchImg}
               alt="searchImg"
               className="w-[20px] md:w-[24px] h-[20px] md:h-[24px] mr-[9px] md:mr-[23.94px] ml-[8px]"
             />
             <input
               type="text"
               placeholder="Search GitHub username."
-              className="text-[#4B6A9B] text-[13px] w-[184px] mr-[7px]"
+              className="text-[#4B6A9B] text-[13px] w-[180px] h-[35px] mr-[7px] p-2"
               style={{ backgroundColor: theme ? "" : "#1E2A47" }}
+              ref={searcInput}
+              onKeyDown={(e) => {
+                if (e.key == "Enter") {
+                  getUser();
+                }
+              }}
+              defaultValue={"octocat"}
             ></input>
             <button
               className="w-[84px] md:w-[106px] h-[46px] md:h-[50px] bg-[#0079FF] rounded-[10px] text-white text-[14px] md:text-[16px] font-bold mr-[8px] md:ml-[195px] xl:ml-[350px] "
-              onClick={handeClick}
+              onClick={(e) => {
+                e.preventDefault();
+                getUser();
+                searcInput.current?.value;
+              }}
             >
               Search
             </button>
@@ -89,28 +148,28 @@ export default function Search() {
         <div>
           <div className="flex items-center mb-[34px] md:mb-[24px]">
             <img
-              src={oval}
+              src={!user?.avatar_url ? oval : user?.avatar_url}
               alt="ovalImg"
-              className="mr-[19px] md:mr-[41px] xl:mr-[37px] md:h-[117px] md:w-[117px] rounded-full"
+              className="mr-[19px] h-[70px] w-[70px] md:mr-[41px] xl:mr-[37px] md:h-[117px] md:w-[117px] rounded-full"
             />
             <div>
               <h3
                 className="text-[#2b3442] md:text-[26px] font-bold"
                 style={{ color: theme ? "" : "#fff" }}
               >
-                The Octocat
+                {user?.name}
               </h3>
               <p
                 className="text-[#0079FF] text-[13px] md:text-[16px]
               font-normal mb-[6px]"
               >
-                @octocat
+                {user?.login}
               </p>
               <p
                 className="text-[#697C9A] text-[13px] md:text-[15px] font-normal"
                 style={{ color: theme ? "" : "#fff" }}
               >
-                Joined 25 Jan 2011
+                {`Joined ${month} ${monthName} ${year}`}
               </p>
             </div>
           </div>
@@ -137,7 +196,7 @@ export default function Search() {
                 className="text-[#2B3442] text-4 md:text-[22px] font-bold"
                 style={{ color: theme ? "" : "#fff" }}
               >
-                8
+                {!user?.public_repos ? "0" : user?.public_repos}
               </span>
             </div>
             <div className="flex flex-col items-center">
@@ -152,7 +211,7 @@ export default function Search() {
                 className="text-[#2B3442] text-4 md:text-[22px] font-bold"
                 style={{ color: theme ? "" : "#fff" }}
               >
-                3938
+                {!user?.followers ? "0" : user?.followers}
               </span>
             </div>
             <div className="flex flex-col items-center xl:mr-10">
@@ -167,7 +226,7 @@ export default function Search() {
                 className="text-[#2B3442] text-4 md:text-[22px] font-bold"
                 style={{ color: theme ? "" : "#fff" }}
               >
-                9
+                {!user?.following ? "0" : user?.following}
               </span>
             </div>
           </div>
@@ -183,7 +242,7 @@ export default function Search() {
                   style={{ color: theme ? "" : "#fff" }}
                 />
                 <p style={{ color: theme ? "" : "#fff" }}>
-                  San Francisco
+                  {!user?.location ? "Not available" : user.location}
                 </p>
               </div>
               <div className="flex items-center mb-[17px]">
@@ -193,7 +252,7 @@ export default function Search() {
                   className="mr-[13px]"
                 />
                 <p style={{ color: theme ? "" : "#fff" }}>
-                  https://github.blog
+                  {!user?.blog ? "Not Available" : user?.blog}
                 </p>
               </div>
             </div>
@@ -206,16 +265,21 @@ export default function Search() {
                   className="mr-[13px]"
                 />
                 <p style={{ color: theme ? "" : "#fff" }}>
-                  Not Available
+                  {!user?.twitter_userName
+                    ? "Not Available"
+                    : user?.twitter_userName}
                 </p>
               </div>
+
               <div className="flex items-center">
                 <img
                   src={company}
                   alt="companyImg"
                   className="mr-[13px]"
                 />
-                <p style={{ color: theme ? "" : "#fff" }}>@github</p>
+                <p style={{ color: theme ? "" : "#fff" }}>
+                  {!user?.company ? "Not Available" : user?.company}
+                </p>
               </div>
             </div>
           </div>
