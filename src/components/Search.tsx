@@ -24,14 +24,33 @@ interface UserType {
 }
 
 export default function Search() {
-  const [theme, setTheme] = useState<boolean>(true);
-  const [user, setUser] = useState<UserType | undefined>();
+  const [theme, setTheme] = useState<boolean>(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme ? JSON.parse(savedTheme) : true;
+  });
+
+  const [user, setUser] = useState<UserType | undefined>(() => {
+    const savedUser = localStorage.getItem("user");
+    return savedUser ? JSON.parse(savedUser) : undefined;
+  });
 
   const searcInput = useRef<HTMLInputElement>(null);
 
+  const handleImageClick = () => {
+    if (searcInput.current) {
+      searcInput.current.focus();
+    }
+  };
+
   useEffect(() => {
-    getUser();
-  }, []);
+    if (user) {
+      localStorage.setItem("user", JSON.stringify(user));
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(theme));
+  }, [theme]);
 
   const getUser = async () => {
     try {
@@ -112,8 +131,9 @@ export default function Search() {
           >
             <img
               src={searchImg}
+              onClick={handleImageClick}
               alt="searchImg"
-              className="w-[20px] md:w-[24px] h-[20px] md:h-[24px] mr-[9px] md:mr-[23.94px] ml-[8px]"
+              className="w-[20px] md:w-[24px] h-[20px] md:h-[24px] mr-[9px] md:mr-[23.94px] ml-[8px] cursor-pointer"
             />
             <input
               type="text"
@@ -233,7 +253,7 @@ export default function Search() {
         </div>
         <div className="flex flex-col mb-[9px] xl:ml-[155px]">
           <div className="md:flex">
-            <div className="md:mr-[65px]">
+            <div className="mr-[62px]">
               <div className="flex items-center mb-[17px]">
                 <img
                   src={location}
@@ -258,7 +278,7 @@ export default function Search() {
             </div>
 
             <div>
-              <div className="flex items-center mb-[17px]">
+              <div className="flex items-center mb-[17px] md:w-[10rem] xl-[10rem]">
                 <img
                   src={twitter}
                   alt="twitterImg"
