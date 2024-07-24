@@ -7,21 +7,7 @@ import company from "/assets/icon-company.svg";
 import { useEffect, useState, useRef } from "react";
 import sun from "/assets/icon-sun.svg";
 import moon from "/assets/icon-moon.svg";
-
-interface UserType {
-  login: string;
-  id: string;
-  name: string;
-  created_at: string;
-  public_repos: string;
-  followers: string;
-  following: string;
-  twitter_userName: string | null;
-  avatar_url: string | undefined;
-  location: string | null;
-  blog: string | null;
-  company: string | null;
-}
+import { UserType } from "./UserTypes";
 
 export default function Search() {
   const [theme, setTheme] = useState<boolean>(() => {
@@ -81,7 +67,7 @@ export default function Search() {
         <div className="flex justify-between items-center w-[327px] mb-[35px] md:w-[573px] xl:w-[730px]">
           <h1
             className="text-[#222731] text-[26px]
-        font-bold mr-[121px]"
+        font-bold mr-[121px] cursor-pointer"
             style={{ color: theme ? "" : "#FFF" }}
           >
             devfinder
@@ -138,7 +124,7 @@ export default function Search() {
             <input
               type="text"
               placeholder="Search GitHub username."
-              className="text-[#4B6A9B] text-[13px] w-[180px] h-[35px] mr-[7px] p-2"
+              className="text-[#4B6A9B] text-[13px] w-[180px] h-[35px] mr-[7px] p-2 md:w-[379px] xl:w-[537px]"
               style={{ backgroundColor: theme ? "" : "#1E2A47" }}
               ref={searcInput}
               onKeyDown={(e) => {
@@ -149,7 +135,7 @@ export default function Search() {
               defaultValue={"octocat"}
             ></input>
             <button
-              className="w-[84px] md:w-[106px] h-[46px] md:h-[50px] bg-[#0079FF] rounded-[10px] text-white text-[14px] md:text-[16px] font-bold mr-[8px] md:ml-[195px] xl:ml-[350px] "
+              className="w-[84px] md:w-[106px] h-[46px] md:h-[50px] bg-[#0079FF] rounded-[10px] text-white text-[14px] md:text-[16px] font-bold mr-[8px]"
               onClick={(e) => {
                 e.preventDefault();
                 getUser();
