@@ -43,6 +43,10 @@ export default function Search() {
       const response = await fetch(
         `https://api.github.com/users/${searcInput.current?.value}`
       );
+      if (!response.ok) {
+        throw new Error("User not found");
+      }
+
       const jsonData = await response.json();
       setUser(jsonData);
     } catch (error) {
@@ -60,7 +64,7 @@ export default function Search() {
 
   return (
     <div
-      className="pt-[31px] px-[24px] pb-[79px] md:pt-[109px] flex flex-col items-center md:w-[573px]-screen xl:w-[730px]-screen w-screen"
+      className="pt-[31px] px-[24px] pb-[79px] md:pt-[109px] flex flex-col items-center md:w-[573px]-screen xl:w-[730px]-screen h-screen w-screen"
       style={{ backgroundColor: theme ? "#F6F8FF" : "#141D2F" }}
     >
       <header className="mb-4">
@@ -72,7 +76,12 @@ export default function Search() {
           >
             devfinder
           </h1>
-          <div className="flex">
+          <div
+            className="flex cursor-pointer"
+            onClick={() => {
+              setTheme((prev) => !prev);
+            }}
+          >
             {theme ? (
               <h3
                 className="text-[#4B6A9B] text-[13px] font-bold tracking-[2.5px]"
@@ -90,23 +99,9 @@ export default function Search() {
             )}
 
             {theme ? (
-              <img
-                src={moon}
-                alt="moonImg"
-                className="ml-[10px] cursor-pointer"
-                onClick={() => {
-                  setTheme(false);
-                }}
-              />
+              <img src={moon} alt="moonImg" className="ml-[10px]" />
             ) : (
-              <img
-                src={sun}
-                alt="sunImg"
-                className="ml-[10px] cursor-pointer"
-                onClick={() => {
-                  setTheme(true);
-                }}
-              />
+              <img src={sun} alt="sunImg" className="ml-[10px]" />
             )}
           </div>
         </div>
@@ -183,8 +178,8 @@ export default function Search() {
             className="text-[#4B6A9B] text-[13px] md:text-[15px] font-normal leading-[25px] mb-[23px] md:mb-[32px] w-[279px] md:w-[470px] xl:ml-[155px]"
             style={{ color: theme ? "" : "#fff" }}
           >
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-            Donec odio. Quisque volutpat mattis eros.
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec
+            odio. Quisque volutpat mattis eros.
           </p>
           <div
             className="flex justify-evenly md:justify-around py-[19px] xl:py-[15px] md:py-[16px] px-[15px] bg-[#F6F8FF] rounded-[10px] mb-[24px] md:mb-[30px] xl:mb-[37px] xl:ml-[155px] xl:w-[480px] xl:h-[85px] xl:justify-between"
@@ -252,11 +247,7 @@ export default function Search() {
                 </p>
               </div>
               <div className="flex items-center mb-[17px]">
-                <img
-                  src={website}
-                  alt="websiteImg"
-                  className="mr-[13px]"
-                />
+                <img src={website} alt="websiteImg" className="mr-[13px]" />
                 <p style={{ color: theme ? "" : "#fff" }}>
                   {!user?.blog ? "Not Available" : user?.blog}
                 </p>
@@ -265,11 +256,7 @@ export default function Search() {
 
             <div>
               <div className="flex items-center mb-[17px] md:w-[10rem] xl-[10rem]">
-                <img
-                  src={twitter}
-                  alt="twitterImg"
-                  className="mr-[13px]"
-                />
+                <img src={twitter} alt="twitterImg" className="mr-[13px]" />
                 <p style={{ color: theme ? "" : "#fff" }}>
                   {!user?.twitter_userName
                     ? "Not Available"
@@ -278,11 +265,7 @@ export default function Search() {
               </div>
 
               <div className="flex items-center">
-                <img
-                  src={company}
-                  alt="companyImg"
-                  className="mr-[13px]"
-                />
+                <img src={company} alt="companyImg" className="mr-[13px]" />
                 <p style={{ color: theme ? "" : "#fff" }}>
                   {!user?.company ? "Not Available" : user?.company}
                 </p>
