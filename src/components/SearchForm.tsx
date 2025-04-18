@@ -64,7 +64,7 @@ export default function Search() {
 
   return (
     <div
-      className="pt-[31px] px-[24px] pb-[79px] md:pt-[109px] flex flex-col items-center md:w-[573px]-screen xl:w-[730px]-screen h-screen w-screen"
+      className="pt-16 flex flex-col items-center md:w-[573px]-screen xl:w-[730px]-screen h-screen w-screen"
       style={{ backgroundColor: theme ? "#F6F8FF" : "#141D2F" }}
     >
       <header className="mb-4">
