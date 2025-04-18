@@ -64,7 +64,7 @@ export default function Search() {
 
   return (
     <div
-      className="pt-16 flex flex-col items-center md:w-[573px]-screen xl:w-[730px]-screen h-screen w-screen"
+      className="pt-16 flex flex-col items-center md:w-[573px]-screen xl:w-[730px]-screen w-screen h-[100vh]"
       style={{ backgroundColor: theme ? "#F6F8FF" : "#141D2F" }}
     >
       <header className="mb-4">
@@ -143,7 +143,7 @@ export default function Search() {
         </form>
       </header>
       <main
-        className="bg-white rounded-[15px] px-[24px] pt-[33px] pb-[49px] w-[327px] md:pb-[4.5px] md:w-[573px] xl:w-[730px] md:p-10 xl:p-[48px]"
+        className="bg-white rounded-[15px] px-[24px] pt-[33px]  w-[327px] md:pb-[4.5px] md:w-[573px] xl:w-[730px] md:p-10 xl:p-[48px]"
         style={{ backgroundColor: theme ? "" : "#1E2A47" }}
       >
         <div>
